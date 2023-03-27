@@ -35,7 +35,20 @@ const Register = () => {
    *      "message": "Username is already taken"
    * }
    */
+  const [formData, setformData] = React.useState({
+    username: '',
+    password: '',
+    confirmPassword: ''
+  })
   const register = async (formData) => {
+    const formDiv = document.getElementsByClassName('form')[0];
+    formDiv.addEventListener('click',(event) => {
+      setformData({[formData.username]: event.target.username,
+                   [formData.password]: event.target.password,
+                   [formData.confirmPassword]: event.target.confirmPassword
+      })
+    })
+    console.log(formData);
   };
 
   // TODO: CRIO_TASK_MODULE_REGISTER - Implement user input validation logic
@@ -97,7 +110,7 @@ const Register = () => {
             type="password"
             fullWidth
           />
-           <Button className="button" variant="contained">
+           <Button className="button" variant="contained" onClick={register}>
             Register Now
            </Button>
           <p className="secondary-action">
