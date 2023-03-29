@@ -11,6 +11,7 @@ import { useHistory, Link } from "react-router-dom";
 
 const Register = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory()
 
 
   /**
@@ -61,12 +62,15 @@ const Register = () => {
       await axios.post(`${config.endpoint}/auth/register`, newObj)
       enqueueSnackbar('Registered successfully', {variant:"success"})
       setIsLoading(false)
+      history.push('/login')
     }
     catch(err){
       if(err.response && err.response.status===400){
         enqueueSnackbar(err.response.data.message, {variant:"error"})
+        setIsLoading(false)
       } else {
         enqueueSnackbar("Something went wrong. Check that the backend is running, reachable and returns valid JSON.")
+        setIsLoading(false)
       }
     }
   };
@@ -163,9 +167,9 @@ const Register = () => {
            {isLoading && <CircularProgress color="inherit" />}
           <p className="secondary-action">
             Already have an account?{" "}
-             <a className="link" href="#">
+             <Link className="link" to="/login">
               Login here
-             </a>
+             </Link>
           </p>
         </Stack>
       </Box>

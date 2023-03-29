@@ -6,7 +6,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 85vh;
+  height: 90vh;
 }
 
 .form {
@@ -42,7 +42,7 @@
 
 .link:visited {
   color: #45c09f;
-}
+} 
 
 .button {
     background-color: #00a278 !important;
