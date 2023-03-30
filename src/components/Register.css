@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   height: 90vh;
 }
@@ -42,7 +42,7 @@
 
 .link:visited {
   color: #45c09f;
-} 
+}
 
 .button {
     background-color: #00a278 !important;
