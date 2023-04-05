@@ -8,8 +8,6 @@ import { useHistory } from "react-router-dom";
 const Header = ({ children, hasHiddenAuthButtons }) => {
   const history = useHistory();
 
-  console.log(localStorage.getItem("username")==='null');
-
   const login = () => {
     history.push("/login");
   };
@@ -46,6 +44,9 @@ const Header = ({ children, hasHiddenAuthButtons }) => {
       <Box className="header">
         <Box className="header-title">
           <img src="logo_light.svg" alt="QKart-icon"></img>
+        </Box>
+        <Box>
+          {children}
         </Box>
         <Box>
           {localStorage.getItem("username")===null ? (
