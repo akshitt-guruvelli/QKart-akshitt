@@ -184,6 +184,7 @@ import Header from "./Header";
  * @property { String} value - Latest value of the address being typed
  */
 
+// TODO: CRIO_TASK_MODULE_CHECKOUT - Should allow to type a new address in the text field and add the new address or cancel adding new address
 /**
  * Returns the complete data on all products in cartData by searching in productsData
  *
@@ -244,6 +245,7 @@ const Checkout = () => {
     value: "",
   });
 
+  // Fetch the entire products list
   const getProducts = async () => {
     try {
       const response = await axios.get(`${config.endpoint}/products`);
@@ -265,6 +267,7 @@ const Checkout = () => {
     }
   };
 
+  // Fetch cart data
   const fetchCart = async (token) => {
     if (!token) return;
     try {
@@ -370,6 +373,7 @@ const Checkout = () => {
    */
   const addAddress = async (token, newAddress) => {
     try {
+      // TODO: CRIO_TASK_MODULE_CHECKOUT - Add new address to the backend and display the latest list of addresses
 
     } catch (e) {
       if (e.response) {
@@ -421,6 +425,7 @@ const Checkout = () => {
    */
   const deleteAddress = async (token, addressId) => {
     try {
+      // TODO: CRIO_TASK_MODULE_CHECKOUT - Delete selected address from the backend and display the latest list of addresses
 
     } catch (e) {
       if (e.response) {
@@ -436,6 +441,7 @@ const Checkout = () => {
     }
   };
 
+  // TODO: CRIO_TASK_MODULE_CHECKOUT - Validate request for checkout
   /**
    * Return if the request validation passed. If it fails, display appropriate warning message.
    *
@@ -463,6 +469,7 @@ const Checkout = () => {
   const validateRequest = (items, addresses) => {
   };
 
+  // TODO: CRIO_TASK_MODULE_CHECKOUT
   /**
    * Handler function to perform checkout operation for items added to the cart for the selected address
    *
@@ -497,8 +504,10 @@ const Checkout = () => {
   const performCheckout = async (token, items, addresses) => {
   };
 
+  // TODO: CRIO_TASK_MODULE_CHECKOUT - Fetch addressses if logged in, otherwise show info message and redirect to Products page
 
 
+  // Fetch products and cart data on page load
   useEffect(() => {
     const onLoadHandler = async () => {
       const productsData = await getProducts();
@@ -511,6 +520,7 @@ const Checkout = () => {
       }
     };
     onLoadHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -529,8 +539,33 @@ const Checkout = () => {
             </Typography>
             <Divider />
             <Box>
+              {/* TODO: CRIO_TASK_MODULE_CHECKOUT - Display list of addresses and corresponding "Delete" buttons, if present, of which 1 can be selected */}
+               <Typography my="1rem">
+                 No addresses found for this account. Please add one to proceed
+               </Typography>
             </Box>
 
+            {/* TODO: CRIO_TASK_MODULE_CHECKOUT - Dislay either "Add new address" button or the <AddNewAddressView> component to edit the currently selected address */}
+            <Button
+                color="primary"
+                variant="contained"
+                id="add-new-btn"
+                size="large"
+                onClick={() => {
+                  setNewAddress((currNewAddress) => ({
+                    ...currNewAddress,
+                    isAddingNewAddress: true,
+                  }));
+                }}
+              >
+                Add new address
+            </Button>
+            <AddNewAddressView
+                token={token}
+                newAddress={newAddress}
+                handleNewAddress={setNewAddress}
+                addAddress={addAddress}
+            />
 
             <Typography color="#3C3C3C" variant="h4" my="1rem">
               Payment
