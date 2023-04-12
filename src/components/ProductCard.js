@@ -20,7 +20,7 @@ const ProductCard = ({ product, handleAddToCart }) => {
         <Typography variant="body1">${product.cost}</Typography>
         <Rating name="productRating" value={product.rating} readOnly />
         <CardActions>
-          <Button style={{ width: "100%" }} variant="contained" role = "button">
+          <Button style={{ width: "100%" }} variant="contained" role = "button" onClick={handleAddToCart}>
             ADD TO CART
           </Button>
         </CardActions>
