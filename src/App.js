@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Products from "./components/Products";
 import React from "react";
 import Checkout from "./components/Checkout";
+import Thanks from "./components/Thanks";
 export const config = {
   endpoint: `http://${ipConfig.workspaceIp}:8082/api/v1`,
 };
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/checkout">
           <Checkout />
+        </Route>
+        <Route path="/thanks">
+          <Thanks />
         </Route>
       </Switch>
     </div>
